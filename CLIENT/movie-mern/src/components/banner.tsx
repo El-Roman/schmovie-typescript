@@ -1,11 +1,17 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Banner({ selectedMovie }) {
-  const dateOptions = {
+export default function Banner({ selectedMovie }: { selectedMovie: any }) {
+  type DateOptions = {
+    year?: "numeric" | "2-digit";
+    month?: "numeric" | "2-digit" | "short";
+    day?: "numeric" | "2-digit";
+  };
+
+  const dateOptions: DateOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",
-    timeZone: "UTC",
   };
 
   return (

@@ -1,3 +1,5 @@
+// <><> merge new-migration branch into main <><> //
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { MovieContext } from "./context/movieContext";
@@ -7,13 +9,14 @@ import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";
 import MovieView from "./components/movieView";
 import Footer from "./components/footer";
-import Banner from "./components/banner";
+import Banner from "./components/Banner";
 import TopNav from "./components/topNav";
+import React from "react";
 
 export default function App() {
   // state variables
-  const [query, setQuery] = useState(""); // handles search input
-  const [movies, setMovies] = useState([]); // handles list of movies returned from api
+  const [query, setQuery] = useState<string>(""); // handles search input
+  const [movies, setMovies] = useState<[]>([]); // handles list of movies returned from api
   const [selectedMovie, setSelectedMovie] = useState([]); // handles banner display
 
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
@@ -53,7 +56,7 @@ export default function App() {
           <Route
             path="/"
             element={
-              <MovieContext.Provider value={{ movies }}>
+              <MovieContext.Provider value={movies}>
                 <SideBar
                   query={query}
                   setQuery={setQuery}

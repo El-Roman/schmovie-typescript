@@ -2,10 +2,16 @@ import React from "react";
 import logo from "../img/Shmovie.png";
 import "../index.css";
 
-export default function TopNav({ query, setQuery }) {
+export default function TopNav({
+  query,
+  setQuery,
+}: {
+  query: any;
+  setQuery: any;
+}) {
   return (
     <header id="header" className="mb-2 mx-5">
-      <div class="flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <div className="image-container">
           <a href="/" className="text-white no-underline">
             {/*<h3 className="logo-header">SHMOVIE FANATICS</h3>*/}

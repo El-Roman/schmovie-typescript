@@ -1,3 +1,4 @@
+import React from "react";
 import logo from "../img/Shmovie.png";
 
 export default function NavBar() {

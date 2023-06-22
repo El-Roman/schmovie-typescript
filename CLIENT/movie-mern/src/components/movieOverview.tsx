@@ -1,4 +1,6 @@
-export default function MovieOverView({ movie }) {
+import React from "react";
+
+export default function MovieOverView({ movie }: { movie: any }) {
   return (
     <div className="card mb-4">
       <div className="card-header">Description</div>

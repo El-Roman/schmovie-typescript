@@ -1,4 +1,6 @@
-export default function GenreDisplay({ movie }) {
+import React from "react";
+
+export default function GenreDisplay({ movie }: { movie: any }) {
   return (
     <div className="card mb-4">
       <div className="card-header">Genres</div>

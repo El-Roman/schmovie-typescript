@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function CommentSection() {
-  const [comments, setComments] = useState([]);
+interface Comment {
+  comment_id: string;
+  name: string;
+  text: string;
+}
+
+export default function Comments() {
+  const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState({ name: "", text: "" });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
 
     // Make POST request to create new comment
     await axios.post("http://localhost:4005/api/comments/", newComment);
@@ -20,10 +25,7 @@ export default function CommentSection() {
     setComments(response.data);
   };
 
-
-
-  
-  const handleDelete = async (id, index) => {
+  const handleDelete = async (id: any, index: any) => {
     console.log("id:", id);
     console.log("comments before delete:", comments);
 
@@ -52,7 +54,6 @@ export default function CommentSection() {
     fetchData();
   }, []);
 
-
   return (
     <div className="card bg-light">
       <div className="card-body">
@@ -77,13 +78,12 @@ export default function CommentSection() {
               Comment
             </label>
             <textarea
-              type="text"
               value={newComment.text}
               onChange={(e) =>
                 setNewComment({ ...newComment, text: e.target.value })
               }
               className="form-control"
-              rows="3"
+              rows={3}
               id="commentInput"
               placeholder="Join the discussion and leave a comment!"
             ></textarea>
@@ -113,7 +113,7 @@ export default function CommentSection() {
                   <div>{comment.text}</div>
                   <button
                     className="delete-todo"
-                    onClick={handleDelete.bind(this, comment.comment_id, index)}
+                    onClick={() => handleDelete(comment.comment_id, index)}
                   >
                     x
                   </button>

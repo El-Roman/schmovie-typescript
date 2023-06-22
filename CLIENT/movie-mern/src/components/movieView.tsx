@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import { FaStar } from "react-icons/fa";
 import Footer from "./footer";
 import Comments from "./comments";
 import GenreDisplay from "./genre";
@@ -8,18 +7,22 @@ import ProductionInfo from "./productionInfo";
 import MovieOverView from "./movieOverview";
 import MovieViewPoster from "./movieViewPoster";
 import HeaderGenre from "./headerGenre";
+import React from "react";
 
 export default function MovieView() {
-  const [movie, setMovie] = useState([]);
-  const [comment, setComment] = useState([]);
-  const [newComment, setNewComment] = useState("");
+  const [movie, setMovie] = useState<any>(null);
   const { id } = useParams();
 
-  const dateOptions = {
+  type DateOptions = {
+    year?: "numeric" | "2-digit";
+    month?: "numeric" | "2-digit" | "short";
+    day?: "numeric" | "2-digit";
+  };
+
+  const dateOptions: DateOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",
-    timeZone: "UTC",
   };
 
   useEffect(() => {
@@ -38,8 +41,6 @@ export default function MovieView() {
   //     setCommentById(movie.id);
   //   }
   // }, [movie]);
-
-
 
   return (
     <div>
@@ -94,10 +95,10 @@ export default function MovieView() {
         </div>
 
         <Comments
-          setNewComment={setNewComment}
-          setComment={setComment}
-          newComment={newComment}
-          comment={comment}
+        // setNewComment={setNewComment}
+        // setComment={setComment}
+        // newComment={newComment}
+        // comment={comment}
         />
       </div>
       <Footer />
